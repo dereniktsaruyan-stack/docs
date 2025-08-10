@@ -2,3 +2,55 @@
 title: 'New Plant'
 openapi: 'WEBHOOK /plant/webhook'
 ---
+
+## Overview
+
+Receive notifications when a new plant is added to the store.
+
+- **Method**: POST (incoming from server)
+- **Path**: `/plant/webhook`
+- **Auth**: As configured by your server (no auth enforced by spec)
+
+## Event payload
+
+- Content-Type: `application/json`
+- Schema: `NewPlant`
+
+```json
+{
+  "id": 1001,
+  "name": "Aloe Vera",
+  "tag": "succulent"
+}
+```
+
+## Example receivers
+
+```javascript
+// Node.js (Express)
+import express from 'express';
+const app = express();
+app.use(express.json());
+app.post('/plant/webhook', (req, res) => {
+  const event = req.body; // validate signature here if used
+  console.log('New plant:', event);
+  res.sendStatus(200);
+});
+app.listen(3000);
+```
+
+```python
+# Python (Flask)
+from flask import Flask, request
+app = Flask(__name__)
+@app.post('/plant/webhook')
+def plant_webhook():
+    event = request.get_json()
+    print('New plant:', event)
+    return ('', 200)
+```
+
+## Best practices
+
+- Respond with 200 quickly to acknowledge receipt, then process asynchronously.
+- If you use signatures, verify them before trusting the payload.

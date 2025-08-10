@@ -2,3 +2,56 @@
 title: 'Delete Plant'
 openapi: 'DELETE /plants/{id}'
 ---
+
+## Overview
+
+Delete a plant by its identifier.
+
+- **Method**: DELETE
+- **Path**: `/plants/{id}`
+- **Auth**: Bearer token required
+
+## Path parameters
+
+- **id** (integer, required): ID of plant to delete
+
+## Example requests
+
+```bash
+# cURL
+curl -X DELETE "http://sandbox.mintlify.com/plants/1001" \
+  -H "Authorization: Bearer $API_TOKEN"
+```
+
+```javascript
+// JavaScript (fetch)
+await fetch('http://sandbox.mintlify.com/plants/1001', {
+  method: 'DELETE',
+  headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
+});
+```
+
+```python
+# Python (requests)
+import os, requests
+requests.delete(
+    'http://sandbox.mintlify.com/plants/1001',
+    headers={'Authorization': f"Bearer {os.environ['API_TOKEN']}"}
+)
+```
+
+## Responses
+
+- **204 No Content**: Plant deleted
+- **400 Bad Request**: Invalid ID or request
+
+```json
+{
+  "error": 400,
+  "message": "invalid id"
+}
+```
+
+## Tips
+
+- Deletions are permanent. Consider soft-deletes or archival on the client if needed.

@@ -1,0 +1,42 @@
+---
+title: 'Authentication'
+description: 'Authenticate with Bearer tokens to call the API'
+---
+
+## Using Bearer tokens
+
+All API endpoints require a Bearer token passed via the `Authorization` header.
+
+```http
+Authorization: Bearer <YOUR_API_TOKEN>
+```
+
+### cURL
+
+```bash
+curl -H "Authorization: Bearer $API_TOKEN" \
+     -H "Accept: application/json" \
+     http://sandbox.mintlify.com/plants
+```
+
+### JavaScript
+
+```javascript
+await fetch('http://sandbox.mintlify.com/plants', {
+  headers: { Authorization: `Bearer ${process.env.API_TOKEN}` }
+});
+```
+
+### Python
+
+```python
+import os, requests
+requests.get(
+  'http://sandbox.mintlify.com/plants',
+  headers={'Authorization': f"Bearer {os.environ['API_TOKEN']}"}
+)
+```
+
+## Getting a token
+
+Obtain API tokens from your dashboard or environment depending on your setup.

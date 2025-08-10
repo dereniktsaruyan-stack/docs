@@ -2,3 +2,88 @@
 title: 'Create Plant'
 openapi: 'POST /plants'
 ---
+
+## Overview
+
+Create a new plant in the store.
+
+- **Method**: POST
+- **Path**: `/plants`
+- **Auth**: Bearer token required
+
+## Request body
+
+- Content-Type: `application/json`
+- Schema: `NewPlant`
+
+Fields:
+- **id** (integer, required): Identification number of the plant
+- **name** (string, required): The name of the plant
+- **tag** (string, optional): Tag to specify the type
+
+## Example requests
+
+```bash
+# cURL
+curl -X POST "http://sandbox.mintlify.com/plants" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": 1001,
+    "name": "Aloe Vera",
+    "tag": "succulent"
+  }'
+```
+
+```javascript
+// JavaScript (fetch)
+const response = await fetch('http://sandbox.mintlify.com/plants', {
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer ${process.env.API_TOKEN}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ id: 1001, name: 'Aloe Vera', tag: 'succulent' }),
+});
+const created = await response.json();
+```
+
+```python
+# Python (requests)
+import os, requests
+payload = {"id": 1001, "name": "Aloe Vera", "tag": "succulent"}
+resp = requests.post(
+    'http://sandbox.mintlify.com/plants',
+    json=payload,
+    headers={'Authorization': f"Bearer {os.environ['API_TOKEN']}"}
+)
+created = resp.json()
+```
+
+## Successful response
+
+- **Status**: 200 OK
+- **Body**: `Plant`
+
+```json
+{
+  "name": "Aloe Vera",
+  "tag": "succulent"
+}
+```
+
+## Error responses
+
+- **400 Bad Request**: Malformed request or validation error
+
+```json
+{
+  "error": 400,
+  "message": "name is required"
+}
+```
+
+## Tips
+
+- Ensure `id` is unique to avoid conflicts.
+- Validate fields client-side to provide instant feedback.

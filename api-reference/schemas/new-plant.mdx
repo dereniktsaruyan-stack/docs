@@ -1,0 +1,30 @@
+---
+title: 'Schema: NewPlant'
+---
+
+Represents the payload to create a plant.
+
+## Fields
+
+- **id** (integer, required): Identification number of the plant
+- All fields from `Plant`:
+  - **name** (string, required)
+  - **tag** (string, optional)
+
+## JSON example
+
+```json
+{
+  "id": 1001,
+  "name": "Aloe Vera",
+  "tag": "succulent"
+}
+```
+
+## TypeScript
+
+```ts
+export interface NewPlant extends Plant {
+  id: number;
+}
+```

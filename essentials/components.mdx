@@ -1,0 +1,73 @@
+---
+title: 'UI Components'
+description: 'Catalog of MDX components used in this documentation'
+---
+
+This page showcases the MDX components available in the docs, with examples you can copy.
+
+## Card
+
+Displays a highlighted card linking to another page.
+
+```mdx
+<Card title="Start here" icon="rocket" href="/quickstart" horizontal>
+  Follow our three step quickstart guide.
+</Card>
+```
+
+## CardGroup
+
+Arrange multiple cards in a responsive grid.
+
+```mdx
+<CardGroup cols={2}>
+  <Card title="Write Content" icon="pen-to-square" href="/essentials/markdown" />
+  <Card title="Customize style" icon="palette" href="/essentials/settings" />
+</CardGroup>
+```
+
+## Columns
+
+Create side-by-side content columns.
+
+```mdx
+<Columns cols={2}>
+  <Card title="Edit locally" icon="pen-to-square" href="/development" />
+  <Card title="Customize your site" icon="palette" href="/essentials/settings" />
+</Columns>
+```
+
+## Note
+
+Call out supplementary information.
+
+```mdx
+<Note>
+  You can remove the API section by deleting the `api-reference` folder.
+</Note>
+```
+
+## Tabs and Tab
+
+Organize platform-specific or multi-step instructions.
+
+```mdx
+<Tabs>
+  <Tab title="macOS">brew install example</Tab>
+  <Tab title="Windows">choco install example</Tab>
+</Tabs>
+```
+
+## CodeGroup
+
+Show the same example in multiple languages.
+
+```mdx
+<CodeGroup>
+```bash
+curl https://api.example.com
+```
+```javascript
+await fetch('https://api.example.com')
+```
+</CodeGroup>
