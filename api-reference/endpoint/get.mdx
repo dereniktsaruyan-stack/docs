@@ -2,3 +2,80 @@
 title: 'Get Plants'
 openapi: 'GET /plants'
 ---
+
+## Overview
+
+Retrieve a paginated list of plants visible to the authenticated user.
+
+- **Method**: GET
+- **Path**: `/plants`
+- **Auth**: Bearer token required
+
+## Query parameters
+
+- **limit** (integer, optional): The maximum number of results to return.
+
+## Example requests
+
+```bash
+# cURL
+curl -X GET "http://sandbox.mintlify.com/plants?limit=10" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Accept: application/json"
+```
+
+```javascript
+// JavaScript (fetch)
+const response = await fetch('http://sandbox.mintlify.com/plants?limit=10', {
+  headers: {
+    Authorization: `Bearer ${process.env.API_TOKEN}`,
+    Accept: 'application/json',
+  },
+});
+const plants = await response.json();
+```
+
+```python
+# Python (requests)
+import os, requests
+resp = requests.get(
+    'http://sandbox.mintlify.com/plants',
+    params={'limit': 10},
+    headers={'Authorization': f"Bearer {os.environ['API_TOKEN']}"}
+)
+plants = resp.json()
+```
+
+## Successful response
+
+- **Status**: 200 OK
+- **Body**: Array of `Plant`
+
+```json
+[
+  {
+    "name": "Snake Plant",
+    "tag": "succulent"
+  },
+  {
+    "name": "Monstera",
+    "tag": "tropical"
+  }
+]
+```
+
+## Error responses
+
+- **400 Bad Request**: Invalid parameter(s)
+
+```json
+{
+  "error": 400,
+  "message": "limit must be an integer"
+}
+```
+
+## Tips
+
+- Use the `limit` parameter to control pagination from the client.
+- Combine with client-side caching to reduce repeated fetches.

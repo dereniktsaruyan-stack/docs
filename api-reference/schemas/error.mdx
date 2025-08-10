@@ -1,0 +1,28 @@
+---
+title: 'Schema: Error'
+---
+
+Represents an error returned by the API.
+
+## Fields
+
+- **error** (integer, required): Error code
+- **message** (string, required): Human-readable description
+
+## JSON example
+
+```json
+{
+  "error": 400,
+  "message": "invalid id"
+}
+```
+
+## TypeScript
+
+```ts
+export interface ApiError {
+  error: number;
+  message: string;
+}
+```

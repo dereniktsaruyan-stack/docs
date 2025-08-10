@@ -28,15 +28,16 @@
               "essentials/navigation"
             ]
           },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
+                      {
+              "group": "Writing content",
+              "pages": [
+                "essentials/markdown",
+                "essentials/code",
+                "essentials/images",
+                "essentials/reusable-snippets",
+                "essentials/components"
+              ]
+            },
           {
             "group": "AI tools",
             "pages": [
@@ -53,7 +54,16 @@
           {
             "group": "API documentation",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication"
+            ]
+          },
+          {
+            "group": "Schemas",
+            "pages": [
+              "api-reference/schemas/plant",
+              "api-reference/schemas/new-plant",
+              "api-reference/schemas/error"
             ]
           },
           {

@@ -1,0 +1,28 @@
+---
+title: 'Schema: Plant'
+---
+
+Represents a plant resource.
+
+## Fields
+
+- **name** (string, required): The name of the plant
+- **tag** (string, optional): Tag to specify the type
+
+## JSON example
+
+```json
+{
+  "name": "Snake Plant",
+  "tag": "succulent"
+}
+```
+
+## TypeScript
+
+```ts
+export interface Plant {
+  name: string;
+  tag?: string;
+}
+```
